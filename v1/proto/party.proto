@@ -1,16 +1,16 @@
 syntax = "proto3";
 
-//package api.v1;
+package party.v1;
 
 service PartyService {
-  rpc CreateParty(PartyRequest) returns (PartyResponse);
-  rpc SearchParty(PartyRequest) returns (PartyResponse);
-  rpc UpdateParty(PartyRequest) returns (PartyResponse);
+  rpc CreateParty(PartyRequest) returns (Party);
+  rpc GetParty(PartyRequest) returns (Party);
+  rpc UpdateParty(PartyRequest) returns (Party);
 }
 
 message Party {
-  string FirstName = 1;
-  string LastName = 2;
+  string firstName = 1;
+  string lastName = 2;
 
   enum Gender {
     MALE = 0;
@@ -30,13 +30,18 @@ message Party {
     PhoneType type  = 2;
   } 
   
-  string DataOfBirth = 4;
+  string dataOfBirth = 4;
   repeated PhoneNumber phones = 5;    
-  string Email = 6;
-  string PanNumber = 7;
-  string Address = 9;
-  string Aadhaar = 10;
-  int64 partyId = 11;     
+  string email = 6;
+  string addressLine1 = 7;
+  string addressLine2 = 8;
+  string addressLine3 = 9;
+  int32 pinCode = 10;
+  double latitude = 11;
+  double longitude = 12;
+  string panNumber = 13;
+  string aadhaar = 14;
+  int64 id = 15;     
 }
 
 message PartyRequest {
